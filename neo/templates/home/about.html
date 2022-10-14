@@ -14,7 +14,13 @@
         <li><a href="/faq">FAQ</a></li>
         <li><a href="/howto">How To</a></li>
         <li style="float:right"><a class="active" href="/signout">Log Out</a></li>
-        <li style="float:right"><a class="active" href="/account">My Account</a></li>
+        <li class="dropdown" style="float:right">
+            <a href="/account" class="dropbtn">My Account</a>
+            <div class="dropdown-content">
+                <a href="#">Trading</a>
+                <a href="#">History</a>
+                <a href="#">API Keys</a>
+            </div>
     </ul>
     {% else %}
     <ul>

@@ -6,6 +6,22 @@
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
     <title>About</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}">
+    {% if user.is_authenticated %}
+    <ul>
+        <li><a href="/home">Neo</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/howto">How To</a></li>
+        <li style="float:right"><a class="active" href="/signout">Log Out</a></li>
+        <li class="dropdown" style="float:right">
+            <a href="/account" class="dropbtn">My Account</a>
+            <div class="dropdown-content">
+                <a href="#">Trading</a>
+                <a href="#">History</a>
+                <a href="#">API Keys</a>
+            </div>
+    </ul>
+    {% else %}
     <ul>
         <li><a href="/home">Neo</a></li>
         <li><a href="/about">About</a></li>
@@ -14,6 +30,7 @@
         <li style="float:right"><a class="active" href="/signup">Register</a></li>
         <li style="float:right"><a class="active" href="/signin">Log In</a></li>
     </ul>
+    {% endif %}
 </head>
 <body>
 <h1>Why Neo?</h1>
