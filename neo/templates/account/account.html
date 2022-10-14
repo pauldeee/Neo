@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<style>
+
+    li.dropdown {
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    <title>My Account</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}">
+    <ul>
+        <li><a href="/home">Neo</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/howto">How To</a></li>
+        <li style="float:right"><a class="active" href="/signout">Log Out</a></li>
+        <!--        <li style="float:right"><a class="active" href="/account">My Account</a></li>-->
+        <li class="dropdown" style="float:right">
+            <a href="/account" class="dropbtn">My Account</a>
+            <div class="dropdown-content">
+                <a href="#">Trading</a>
+                <a href="#">History</a>
+                <a href="#">API Keys</a>
+            </div>
+        </li>
+    </ul>
+</head>
+<body>
+<H3>Welcome to Neo</H3>
+
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>Message:</strong> {{message}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endfor %}
+
+{% if user.is_authenticated %}
+<h3>Hello {{ fname }}</h3>
+<h4>You are logged in.</h4>
+<button type="submit"><a href="/signout">SignOut</a></button>
+{% else %}
+<button type="submit"><a href="/signup">SignUp</a></button>
+<button type="submit"><a href="/signin">SignIn</a></button>
+{% endif %}
+</body>
+</html>

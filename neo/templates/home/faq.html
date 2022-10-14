@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
-    <title>Log In</title>
+    <title>FAQ</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}">
     <ul>
         <li><a href="/home">Neo</a></li>
@@ -16,22 +16,11 @@
     </ul>
 </head>
 <body>
-<h3>Log In</h3>
-
-<form action="/signin" method="post">
-    {% csrf_token %}
-    <label for="">Username</label>
-    <input type="text" id="username" name="username" placeholder="Enter your username" required>
-    <br>
-
-    <label for="">Password</label>
-    <input type="password" id="pass1" name="pass1" placeholder="Enter your password" required>
-    <br>
-    <br>
-
-    <button type="submit">Sign In!</button>
-
-</form>
+<h1>Frequently Asked Questions</h1>
+<h3>How does Neo work?</h3>
+<p>Neo works by taking account you already own and allowing you to interact with them in one location.</p>
+<h3>Why would I want to use Neo?</h3>
+<p>Neo is much more than just one location for your trading-financials. Neo can place trades, help you trade and even
+    trade for you.</p>
 </body>
-</html>
 </html>

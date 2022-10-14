@@ -1,11 +1,22 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    <title>Registration</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}">
+    <ul>
+        <li><a href="/home">Neo</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/howto">How To</a></li>
+        <li style="float:right"><a class="active" href="/signup">Register</a></li>
+        <li style="float:right"><a class="active" href="/signin">Log In</a></li>
+    </ul>
 </head>
 <body>
-<h3>Sign Up</h3>
+<h3>Register for Neo!</h3>
 
 <form action="/signup" method="post">
     {% csrf_token %}

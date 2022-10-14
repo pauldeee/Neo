@@ -7,7 +7,7 @@ from django.contrib import messages
 
 # Create your views here.
 def home(request):
-    return render(request, "authentication/index.html")
+    return render(request, "home/home.html")
 
 
 def signup(request):
@@ -24,7 +24,7 @@ def signup(request):
         my_user.first_name = fname
         my_user.last_name = lname
 
-        my_user.save()
+        my_user.save()  # save the created user
 
         messages.success(request, "Your account has been successfully created.")
         return redirect('signin')
@@ -41,12 +41,13 @@ def signin(request):
         if user is not None:
             login(request, user)
             fname = user.first_name
-            return render(request, "authentication/index.html", {'fname': fname})
+            return render(request, "account/account.html", {'fname': fname})
         else:
-            messages.error(request, "Bad Credentials! YOU SUCK BUTTT?")
-            return redirect('home')
+            messages.error(request, "Bad Credentials!")
+            return redirect('signin')
 
     return render(request, "authentication/signin.html")
+    # return render(request, "account/account.html")
 
 
 def signout(request):
