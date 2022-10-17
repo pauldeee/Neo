@@ -6,7 +6,7 @@ I'm using ubuntu 20.04 via WSL on windows. This should work on newer ubuntu also
 
 update to latest pip
 
-`pip3 install --upgrade pip3`
+`pip3 install --upgrade pip`
 
 now create a virtual env, I did mine in home directory
 
