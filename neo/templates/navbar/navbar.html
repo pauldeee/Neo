@@ -1,0 +1,63 @@
+<!--ONE NAVBAR TO RULE THEM ALL-->
+
+<!--import navbar css-->
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<nav>
+    <!-- if user is logged in-->
+    {% if user.is_authenticated %}
+    <ul>
+        <li><a href="/home">Neo</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/howto">How To</a></li>
+        <li style="float:right"><a class="active" href="/signout">Log Out</a></li>
+        <li class="dropdown" style="float:right">
+            <a href="/account" class="dropbtn">My Account</a>
+            <div class="dropdown-content">
+                <a href="/trading">Trading</a>
+                <a href="/news">News</a>
+                <a href="/history">History</a>
+                <a href="/api">API Keys</a>
+                <a href="/reports">Reports</a>
+            </div>
+        </li>
+
+        <form style="float: right">
+            <li>
+                <input type="text" placeholder="Search for a stock or crypto..." name="search" size="32">
+            </li>
+            <li>
+                <button type="submit"><i class="fa fa-search"></i>
+                </button>
+            </li>
+        </form>
+    </ul>
+
+    {% else %}
+    <!-- user is logged out-->
+    <ul>
+        <li><a href="/home">Neo</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/howto">How To</a></li>
+        <div style="float: right;">
+            <li><a href="/signup">Register</a></li>
+            <li><a href="/signin">Log In</a></li>
+        </div>
+    </ul>
+    {% endif %}
+</nav>
+
+<!--for messaging the user -- every page has a navbar, so leave this in here????-->
+{% for message in messages %}
+<script>
+    alert('{{message}}');
+</script>
+{% endfor %}
+
+<!--leaving this here, hopefully to remember/as an example of a way for displaying stuff-->
+{% if user.is_authenticated %}
+{% else %}
+{% endif %}

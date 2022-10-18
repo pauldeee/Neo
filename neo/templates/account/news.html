@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--{% load static %}-->
+{% load static %}
 <html lang="en">
 <style>
 
@@ -8,15 +8,16 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
-    <title>My Account</title>
+    <title>News</title>
 
 </head>
 <nav>
     {% include 'navbar/navbar.html' %}
 </nav>
+
 <body>
-<h3>Welcome to Neo</h3>
-<h4>Neo Loves you, {{user.first_name}}</h4>
+<h3>Newsfeed</h3>
+<h4></h4>
 
 
 </body>

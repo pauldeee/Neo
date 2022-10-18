@@ -1,56 +1,18 @@
 <!DOCTYPE html>
-{% load static %}
+<!--{% load static %}-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
     <title>Neo Trading</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/menu.css' %}">
-    {% if user.is_authenticated %}
-    <ul>
-        <li><a href="/home">Neo</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/faq">FAQ</a></li>
-        <li><a href="/howto">How To</a></li>
-        <li style="float:right"><a class="active" href="/signout">Log Out</a></li>
-        <li class="dropdown" style="float:right">
-            <a href="/account" class="dropbtn">My Account</a>
-            <div class="dropdown-content">
-                <a href="#">Trading</a>
-                <a href="#">History</a>
-                <a href="#">API Keys</a>
-            </div>
-    </ul>
-    {% else %}
-    <ul>
-        <li><a href="/home">Neo</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/faq">FAQ</a></li>
-        <li><a href="/howto">How To</a></li>
-        <li style="float:right"><a class="active" href="/signup">Register</a></li>
-        <li style="float:right"><a class="active" href="/signin">Log In</a></li>
-    </ul>
-    {% endif %}
+
 </head>
+<nav>
+    {% include 'navbar/navbar.html' %}
+</nav>
 <body>
 <H3>Neo Trading</H3>
 
-<!--{% for message in messages %}-->
-<!--<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">-->
-<!--    <strong>Message:</strong> {{message}}-->
-<!--    <button type="button" class="close" data-dismiss="alert" aria-label="Close">-->
-<!--        <span aria-hidden="true">&times;</span>-->
-<!--    </button>-->
-<!--</div>-->
-<!--{% endfor %}-->
 
-{% if user.is_authenticated %}
-<h3>Hello {{ fname }}</h3>
-<h4>You are logged in.</h4>
-<button type="submit"><a href="/signout">SignOut</a></button>
-{% else %}
-<button type="submit"><a href="/signup">SignUp</a></button>
-<button type="submit"><a href="/signin">SignIn</a></button>
-{% endif %}
 </body>
 </html>
