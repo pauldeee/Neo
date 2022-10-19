@@ -1,6 +1,7 @@
 /*just some quick stuff to give idea for later frontend UI finalization*/
 
 .box {
+    display: inline-block;
     float: left;
     background-color: lightgrey;
     width: 350px;

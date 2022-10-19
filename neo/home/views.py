@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
 
@@ -14,5 +15,6 @@ def faq(request):
     return render(request, "home/faq.html")
 
 
+@login_required
 def howto(request):
     return render(request, "home/howto.html")
