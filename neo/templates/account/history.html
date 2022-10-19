@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
 <style>
 
 
@@ -15,8 +17,33 @@
     {% include 'navbar/navbar.html' %}
 </nav>
 <body>
-<h3>Welcome to Neo</h3>
-<h4>Neo Loves you, {{user.first_name}}</h4>
+<h1 style="text-align: center">Trading History</h1>
+
+<div class="center">
+
+    <input style="float: left;" type="text" placeholder="Search by asset name or ticker..." size="32">
+    <button style="margin-right: 1%; float: left" type="submit"><i class="fa fa-search"></i>
+        <button style="float: left;">Start date</button>
+        <button style="float: left;">End date</button>
+        <div style="float: left;" class="dropdown">
+            <button onclick="myFunction()" class="dropbtn_click">Sort by</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="#">Profit</a>
+                <a href="#">Loss</a>
+                <a href="#">Quantity</a>
+                <a href="#">Date</a>
+            </div>
+        </div>
+        <div>
+            <br><br>
+            <h2 style="text-align: center">Infinite scrolling trade history</h2>
+
+            <div class=" newsfeed">
+
+            </div>
+
+        </div>
+</div>
 
 
 </body>

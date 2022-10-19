@@ -1,0 +1,32 @@
+/*just some quick stuff to give idea for later frontend UI finalization*/
+
+.box {
+    float: left;
+    background-color: lightgrey;
+    width: 350px;
+    border: 15px #333333;
+    padding: 50px;
+    margin: 20px;
+    text-align: center;
+}
+
+.newsfeed {
+    background-color: lightgrey;
+    width: 800px;
+    border: 0px #333333;
+    padding-top: 500px;
+    margin: 0px;
+    margin-top: 0px;
+    text-align: center;
+}
+
+.center {
+    margin: auto;
+    width: 800px;
+    border: 5px solid #333333;
+    padding: 5px;
+}
+
+
+
+

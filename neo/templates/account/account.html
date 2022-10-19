@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <!--{% load static %}-->
 <html lang="en">
-<style>
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
 
-</style>
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
@@ -15,8 +14,27 @@
     {% include 'navbar/navbar.html' %}
 </nav>
 <body>
-<h3>Welcome to Neo</h3>
-<h4>Neo Loves you, {{user.first_name}}</h4>
+<h2>{{user.first_name}}'s Account</h2>
+<div class="box">
+    <h2>Total Value: $...</h2>
+</div>
+</div>
+<div class="box"><h2>Current Profit / Loss</h2>
+</div>
+</div>
+<div class="box"><h2>Currently Held Assets</h2>
+</div>
+<div class="box">
+    <h2>Newsfeed</h2>
+</div>
+
+<div class="box">
+    <h2>Open Trades</h2>
+</div>
+
+</div>
+<div class="box"><h2>Trade History</h2>
+</div>
 
 
 </body>

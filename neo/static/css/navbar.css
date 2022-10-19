@@ -1,16 +1,25 @@
 body {
-    margin: 200px;
-    /*background-image: url("../images/what.png");*/
+    margin-top: 100px;
+    margin-right: 200px;
+    margin-left: 200px;
+    margin-bottom: 100px;
     /*background-color: #8c1eff;*/
+}
+
+head {
+    background-color: #71dbd4;
+    margin: 0px;
 }
 
 
 ul {
+    font-size: 20px;
     list-style-type: none;
     margin: 0px;
     padding: 0px;
     overflow: hidden;
     background-color: #333;
+
 }
 
 li {

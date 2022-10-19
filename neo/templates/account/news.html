@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-<style>
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
-
-</style>
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
@@ -16,8 +14,15 @@
 </nav>
 
 <body>
-<h3>Newsfeed</h3>
-<h4></h4>
+<div>
+    <h1 style="text-align: center">Newsfeed</h1>
+    <div class="center  ">
+        <h2 style="text-align: center"> Infinite scrolling news feed</h2>
+        <div class="newsfeed">
+
+        </div>
+    </div>
+</div>
 
 
 </body>

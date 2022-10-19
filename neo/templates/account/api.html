@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-<style>
-
-
-</style>
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
@@ -15,7 +12,27 @@
     {% include 'navbar/navbar.html' %}
 </nav>
 <body>
-<h3>API Management</h3>
+
+
+<h1 style="text-align: center">API Management</h1>
+<div class="box"><h2>List of connected accounts</h2>
+</div>
+
+<div class="box"><h2>Connect a new account</h2>
+    <button>Select Exhange</button>
+    <br>
+    <p>Api Secret</p>
+    <input type="text" placeholder="Enter your Api Secret" size="40">
+
+    <p>Api Key</p>
+    <input type="text" placeholder="Enter your Api Key" size="40">
+    <button>Connect your account!</button>
+
+
+</div>
+
+
+</div>
 
 
 </body>
