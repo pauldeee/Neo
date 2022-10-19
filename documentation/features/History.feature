@@ -1,6 +1,6 @@
 Feature: History
 As a user
-I need to be see historical market information for a stock
+I need to be able to see historical market information for a stock
 So that I can make informed financial decisions to capitalize on long term trends
 
 Scenario	User opens historical information for stock
