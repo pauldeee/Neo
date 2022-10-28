@@ -12,7 +12,7 @@ from django.contrib import messages
 
 
 def signup(request):
-    # I'm sure there's a better way to do this try-except block seems incorrectish
+    # I'm sure there's a better way to do this try-except block seems incorrectish?
     try:
         if request.method == "POST":
             # username = request.POST.get('username')  # can also access like below

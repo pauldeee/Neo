@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'exchanges',  # add the app/module list of installed apps
 ]
 
 MIDDLEWARE = [

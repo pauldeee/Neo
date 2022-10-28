@@ -19,15 +19,24 @@
 </div>
 
 <div class="box"><h2>Connect a new account</h2>
-    <button>Select Exchange</button>
-    <br>
-    <p>Api Secret</p>
-    <input type="text" placeholder="Enter your Api Secret" size="40">
+    <form action="/add_api" method="post">
+        {% csrf_token %}
+        <label for="">Select Exchange</label>
+        <select name="exchange" id="exchange">
+            <option value="binanceus">BinanceUS</option>
+            <option value="coinbase">Coinbase</option>
+            <option value="kraken">Kraken</option>
+            <option value="robinhood">Robinhood</option>
+        </select>
+        <br>
 
-    <p>Api Key</p>
-    <input type="text" placeholder="Enter your Api Key" size="40">
-    <button>Connect your account!</button>
-
+        <label for="">Api Secret</label>
+        <input type="text" id="api_key" name="api_key" placeholder="Enter your Api Key" size="40">
+        <br>
+        <label for="">Api Key</label>
+        <input type="text" id="api_secret" name="api_secret" placeholder="Enter your Api Secret" size="40">
+        <button type="submit">Connect Account</button>
+    </form>
 
 </div>
 
