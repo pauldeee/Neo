@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
-    'exchanges',  # add the app/module list of installed apps
+    'authentication',  # add the app/module list of installed apps -- this adds the models.py to the DB
 ]
 
 MIDDLEWARE = [
@@ -88,6 +88,8 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
+
+AUTH_USER_MODEL = 'authentication.CustomUser'
 
 AUTH_PASSWORD_VALIDATORS = [
     {

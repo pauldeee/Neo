@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
+from .models import CustomUser
 
 
 # Create your views here.
@@ -31,7 +32,7 @@ def signup(request):
             if pass2 != pass1:
                 messages.error(request, "Your passwords do not match!")
                 return render(request, 'authentication/signup.html')
-            my_user = User.objects.create_user(user, user, pass1)
+            my_user = CustomUser.objects.create_user(user, user, pass1)
             my_user.first_name = fname
             my_user.last_name = lname
 
@@ -67,3 +68,16 @@ def signout(request):
     logout(request)
     messages.success(request, "Logged out successfully!")
     return redirect('home')
+
+
+def add_api(request):
+    if request.method == 'POST':
+        print(request.POST['api_key'])
+        user = request.user
+        user.exchange = request.POST['exchange']
+        user.api_key = request.POST['api_key']
+        user.api_secret = request.POST['api_secret']
+        user.save()
+
+        messages.success(request, "Account has been successfully added!")
+    return redirect('api')
