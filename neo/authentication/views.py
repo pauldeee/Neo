@@ -1,9 +1,9 @@
-from django.contrib.auth import authenticate, login, logout
-from django.forms import forms
-from django.http import HttpResponse
-from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
+import robin_stocks.robinhood.profiles
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, redirect
+from robin_stocks.robinhood.authentication import login, logout
+
 from .models import CustomUser
 
 
@@ -40,7 +40,7 @@ def signup(request):
 
             messages.success(request, "Your account has been successfully created.")
             return redirect('signin')
-    except:
+    except CustomUser.DoesNotExist:
         messages.error(request, "This email is already in use. Please try another.")
         return render(request, 'authentication/signup.html')
 
@@ -70,14 +70,20 @@ def signout(request):
     return redirect('home')
 
 
+# @TODO add an api connection check?!
 def add_api(request):
     if request.method == 'POST':
-        print(request.POST['api_key'])
         user = request.user
         user.exchange = request.POST['exchange']
         user.api_key = request.POST['api_key']
         user.api_secret = request.POST['api_secret']
-        user.save()
-
-        messages.success(request, "Account has been successfully added!")
-    return redirect('api')
+        try:
+            if login(user.api_key, user.api_secret, by_sms=False):
+                user.save()
+                messages.success(request, "Account has been successfully added!")
+                print(robin_stocks.robinhood.profiles.load_account_profile())
+                logout()
+        except:
+            messages.error(request, "Error: please ensure your Robinhood credentials are correct!")
+            return redirect('api')
+    return redirect('account')

@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 class CustomUser(AbstractUser):
-    EXCHANGES = (('coinbase', 'Coinbase'), ("robinhood", 'Robinhood'))
+    EXCHANGES = ((1, 'Binance'), (2, 'Coinbase'), (3, 'Robinhood'))
 
     exchange = models.CharField(max_length=50, blank=True, choices=EXCHANGES)
     api_key = models.CharField(max_length=255, blank=True)

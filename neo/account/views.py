@@ -6,6 +6,9 @@ from django.shortcuts import render
 # @login_required  # can use this decorator for areas where permission is required.
 def account(request):
     if request.user.is_authenticated:
+        print(request.user.exchange)
+        print(request.user.api_key)
+        print(request.user.api_secret)
         return render(request, "account/account.html")
     else:
         return render(request, "authentication/signin.html")
