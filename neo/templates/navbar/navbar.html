@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <nav>
     <!-- if user is logged in-->
-    {% if user.is_authenticated %}
+    {% if request.user.is_authenticated %}
     <ul>
         <li><a href="/home">Neo</a></li>
         <li><a href="/about">About</a></li>
@@ -24,9 +24,12 @@
             </div>
         </li>
 
-        <form style="float: right">
+        <form action="/search" method="post" style="float: right">
+            {% csrf_token %}
+
             <li>
-                <input type="text" placeholder="Search for a stock or crypto..." name="search" size="32">
+                <input type="text" name="ticker" id="ticker" placeholder="Search for a stock or crypto..."
+                       name="search" size="32">
             </li>
             <li>
                 <button type="submit"><i class="fa fa-search"></i>

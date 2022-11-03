@@ -1,10 +1,13 @@
 import robin_stocks.robinhood.profiles
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from .models import User  # import custom user model
 from django.shortcuts import render, redirect
-from robin_stocks.robinhood.authentication import login, logout
+from robin_stocks.robinhood.authentication import login as robin_login
+from robin_stocks.robinhood.authentication import logout as robin_logout
 
-from .models import CustomUser
+
+# from .models import CustomUser
 
 
 # Create your views here.
@@ -13,7 +16,7 @@ from .models import CustomUser
 
 
 def signup(request):
-    # I'm sure there's a better way to do this try-except block seems incorrectish?
+    # I'm sure there's a better way to do this -- try-except block seems incorrectish?
     try:
         if request.method == "POST":
             # username = request.POST.get('username')  # can also access like below
@@ -32,7 +35,7 @@ def signup(request):
             if pass2 != pass1:
                 messages.error(request, "Your passwords do not match!")
                 return render(request, 'authentication/signup.html')
-            my_user = CustomUser.objects.create_user(user, user, pass1)
+            my_user = User.objects.create_user(user, user, pass1)
             my_user.first_name = fname
             my_user.last_name = lname
 
@@ -40,7 +43,7 @@ def signup(request):
 
             messages.success(request, "Your account has been successfully created.")
             return redirect('signin')
-    except CustomUser.DoesNotExist:
+    except:
         messages.error(request, "This email is already in use. Please try another.")
         return render(request, 'authentication/signup.html')
 
@@ -74,15 +77,15 @@ def signout(request):
 def add_api(request):
     if request.method == 'POST':
         user = request.user
-        user.exchange = request.POST['exchange']
-        user.api_key = request.POST['api_key']
-        user.api_secret = request.POST['api_secret']
+        # user.exchange = request.POST['exchange']
+        user.robinhood_email = request.POST['email']
+        user.robinhood_password = request.POST['password']
         try:
-            if login(user.api_key, user.api_secret, by_sms=False):
+            if robin_login(user.robinhood_email, user.robinhood_password):
                 user.save()
                 messages.success(request, "Account has been successfully added!")
                 print(robin_stocks.robinhood.profiles.load_account_profile())
-                logout()
+                # robin_logout()
         except:
             messages.error(request, "Error: please ensure your Robinhood credentials are correct!")
             return redirect('api')

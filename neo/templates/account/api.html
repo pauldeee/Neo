@@ -23,18 +23,18 @@
         {% csrf_token %}
         <label for="">Select Exchange</label>
         <select name="exchange" id="exchange">
-<!--            <option value="binanceus">BinanceUS</option>-->
-            <option value="coinbase">Coinbase</option>
-<!--            <option value="kraken">Kraken</option>-->
+            <!--            <option value="binanceus">BinanceUS</option>-->
+            <!--            <option value="coinbase">Coinbase</option>-->
+            <!--            <option value="kraken">Kraken</option>-->
             <option value="robinhood">Robinhood</option>
         </select>
         <br>
 
-        <label for="">Api Key</label>
-        <input type="text" id="api_key" name="api_key" placeholder="Enter your Api Key" size="40">
+        <label for="">Robinhood Email </label>
+        <input type="text" id="email" name="email" placeholder="Enter your Robinhood email" size="40">
         <br>
-        <label for="">Api Secret</label>
-        <input type="password" id="api_secret" name="api_secret" placeholder="Enter your Api Secret" size="40">
+        <label for="">Robinhood Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your Robinhood password" size="40">
         <button type="submit">Connect Account</button>
     </form>
 

@@ -9,4 +9,6 @@ urlpatterns = [
     path('trading', views.trading, name="trading"),
     path('news', views.news, name="news"),
     path('reports', views.reports, name="reports"),
+    path('search', views.search, name="search"),
+    path('<str:tid>', views.ticker, name="ticker"),
 ]
