@@ -28,6 +28,11 @@ go to neo directory
 
 `cd neo`
 
+then run a few commands to create a db and set everything up
+
+`python3 manage.py makemigrations authentication`
+`python3 manage.py migrate`
+
 Then to run neo app
 
 `python3 manage.py runserver`

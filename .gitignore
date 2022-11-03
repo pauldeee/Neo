@@ -1,2 +1,3 @@
 /neo/db.sqlite3
 /neo/authentication/migrations/
+/neo/trades/

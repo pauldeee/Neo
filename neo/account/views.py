@@ -73,7 +73,9 @@ def search(request):
 
 @login_required
 def ticker(request, tid):
+    robin_stocks.robinhood.authentication.login()
     context = {'ticker': tid,
-               'stocks': get_stocks_data(tid)
+               'stocks': get_stocks_data(tid),
+               'price': robin_stocks.robinhood.stocks.get_latest_price(tid)
                }
     return render(request, 'account/ticker.html', context)
