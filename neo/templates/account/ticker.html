@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
-    <title>Asset Search</title>
+    <title>{{ ticker }}</title>
 
 </head>
 <nav>
@@ -14,11 +14,21 @@
 <body>
 
 <div style="text-align: center">
-    <h1>{{ ticker }}</h1>
+    <h1>{{ ticker }} -- {{ stocks.name }} <br> ${{ price.0 }}</h1>
 
-    <h2>{{ stocks.name }}</h2>
+    <form action="/place_trade" method="post">
+        {% csrf_token %}
+        {{ order_form }}
+<!--        <input type="text" id="ticker" placeholder="{{ticker}}" value="{{ticker}}">-->
+        <input type="submit" value="Place Trade">
+    </form>
 
-    <h2>Current Price ${{ price.0 }}</h2>
+
+    {% autoescape off %}
+    {{ plot_div }}
+    {% endautoescape %}
+
+
 </div>
 
 

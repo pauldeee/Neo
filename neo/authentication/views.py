@@ -90,3 +90,4 @@ def add_api(request):
             messages.error(request, "Error: please ensure your Robinhood credentials are correct!")
             return redirect('api')
     return redirect('account')
+
