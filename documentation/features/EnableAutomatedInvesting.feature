@@ -1,7 +1,7 @@
-Feature: Prediction
+Feature: Enable Automated Investing
 As a user
-I need to be see what-if information for given investments
-So that I can calculate potential trading options for the future
+I need to be see what-if information for given investments and have the system invest on my behalf
+So that I can calculate potential trading options for the future and capitalize on market movements while I'm out living life.
 
 Scenario	User views calculated investment for a given stock if bought and sold particular dates
 Given			A user is logged in to the system
