@@ -19,11 +19,12 @@ from .robinhood import get_stocks_data
 
 # Create your views here.
 # @login_required  # can use this decorator for areas where permission is required.
+@login_required
 def account(request):
     if request.user.is_authenticated:
         try:
             # context = {'my_account': robin_stocks.robinhood.profiles.load_account_profile()}
-            robin_stocks.robinhood.authentication.login()
+            robin_stocks.robinhood.authentication.login(request.user.robinhood_email, request.user.robinhood_password)
 
             orders = [order for order in robin_stocks.robinhood.orders.get_all_stock_orders() if
                       order['cancel'] is not None]

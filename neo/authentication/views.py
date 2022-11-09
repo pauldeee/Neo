@@ -1,6 +1,9 @@
 import robin_stocks.robinhood.profiles
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
+
 from .models import User  # import custom user model
 from django.shortcuts import render, redirect
 from robin_stocks.robinhood.authentication import login as robin_login
@@ -53,15 +56,18 @@ def signin(request):
 
         if user is not None:
             login(request, user)
-            return render(request, "account/account.html")
+            print('account')
+            return HttpResponseRedirect('account')
         else:
             messages.error(request, "Log in failed! Please check the information you entered is accurate.")
+            print('not account')
             return render(request, 'authentication/signin.html')
-
+    print('signin')
     return render(request, "authentication/signin.html")
     # return render(request, "account/account.html")
 
 
+@login_required
 def signout(request):
     logout(request)
     messages.success(request, "Logged out successfully!")
@@ -69,6 +75,7 @@ def signout(request):
 
 
 # @TODO add an api connection check?!
+@login_required
 def add_api(request):
     if request.method == 'POST':
         user = request.user
