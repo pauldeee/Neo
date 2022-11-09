@@ -14,15 +14,35 @@
 <body>
 
 <div style="text-align: center">
-    <h1>{{ ticker }} -- {{ stocks.name }} <br> ${{ price.0 }}</h1>
+    <h1>{{ ticker }} -- {{ stocks.name }} <br> ${{ stock.price }}</h1>
 
-    <form action="/place_trade" method="post">
+    <h3>Quantity Owned: {{stock.quantity}} shares | Market value: ${{ stock.equity }}</h3>
+
+    <form action="/buy" method="post">
         {% csrf_token %}
-        {{ order_form }}
-<!--        <input type="text" id="ticker" placeholder="{{ticker}}" value="{{ticker}}">-->
-        <input type="submit" value="Place Trade">
+        <input type="hidden" id="buy_ticker" name=buy_ticker value={{ticker}}>
+        <input type="text" id="buy_amount" name="buy_amount" placeholder="Amount to BUY" size="25" required> in
+        <select name="buy_fractional_by" id="buy_fractional_by">
+            <option value="by_price">Dollars</option>
+            <option value="by_quantity">Shares</option>
+        </select>
+        <button type="submit">Place BUY Order</button>
     </form>
 
+
+    <form action="/sell" method="post">
+        {% csrf_token %}
+        <input type="hidden" id="sell_ticker" name=ticker value={{ticker}}>
+        <input type="text" id="sell_amount" name="sell_amount" placeholder="Amount to SELL" size="25" required> in
+        <select name="sell_fractional_by" id="sell_fractional_by">
+            <option value="by_price">Dollars</option>
+            <option value="by_quantity">Shares</option>
+        </select>
+        <button type="submit">Place SELL Order</button>
+    </form>
+
+
+    <button>Add to Watchlist</button>
 
     {% autoescape off %}
     {{ plot_div }}

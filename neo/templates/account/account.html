@@ -19,7 +19,7 @@
     <h2>Market Info Quick View</h2>
 </div>
 <div class="box">
-    <h2>Cash available ${{account.portfolio_cash}}</h2>
+    <h2>Cash available ${{account.buying_power}}</h2>
     <h2>Cash in orders: ${{account.cash_held_for_orders}}</h2>
     <h2>Total market value: ${{portfolio.market_value}}</h2>
     <!--    <h2>Buying Power: ${{account.buying_power}}</h2>-->
@@ -33,10 +33,10 @@
 </div>
 </div>
 <div class="box"><h2>Currently Held Assets</h2>
-    {% for stock in holdings %}
-    <h3>{{stock.name}} </h3>
+    {% for k,v in holdings.items %}
+    <li>{{v.name}}, value = ${{v.equity}}, Δ% = {{ v.percent_change}}</li>
+    <br>
     {% endfor %}
-
 </div>
 <div class="box">
     <h2>Newsfeed</h2>

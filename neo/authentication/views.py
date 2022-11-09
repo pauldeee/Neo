@@ -7,12 +7,7 @@ from robin_stocks.robinhood.authentication import login as robin_login
 from robin_stocks.robinhood.authentication import logout as robin_logout
 
 
-# from .models import CustomUser
-
-
 # Create your views here.
-# def home(request):
-#     return render(request, "home/home.html")
 
 
 def signup(request):
@@ -77,7 +72,6 @@ def signout(request):
 def add_api(request):
     if request.method == 'POST':
         user = request.user
-        # user.exchange = request.POST['exchange']
         user.robinhood_email = request.POST['email']
         user.robinhood_password = request.POST['password']
         try:
@@ -90,4 +84,3 @@ def add_api(request):
             messages.error(request, "Error: please ensure your Robinhood credentials are correct!")
             return redirect('api')
     return redirect('account')
-

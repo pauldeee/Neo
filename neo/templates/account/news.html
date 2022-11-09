@@ -17,11 +17,15 @@
 <div>
     <h1 style="text-align: center">Newsfeed</h1>
     <div class="center  ">
-        <h2 style="text-align: center"> Infinite scrolling news feed</h2>
-        <div class="newsfeed">
-
-        </div>
+        <ul>
+            {% for article in news_articles %}
+            {% for v in article %}
+            <li><a href="{{ v.url }}">{{ v.title }}</a></li>
+            {% endfor %}
+            {% endfor %}
+        </ul>
     </div>
+</div>
 </div>
 
 

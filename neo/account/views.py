@@ -7,12 +7,10 @@ from plotly.subplots import make_subplots
 from robin_stocks.robinhood.stocks import find_instrument_data as find_stocks
 from plotly.offline import plot
 import plotly.graph_objects as go
-import cufflinks as cf
 
 import pandas as pd
 
-from .forms import OrderForm
-from .robinhood import get_my_account
+from .forms import OrderForm, BuyOrderForm, SellOrderForm
 from .robinhood import get_stocks_data
 
 
@@ -26,16 +24,26 @@ def account(request):
         try:
             # context = {'my_account': robin_stocks.robinhood.profiles.load_account_profile()}
             robin_stocks.robinhood.authentication.login()
+
+            orders = [order for order in robin_stocks.robinhood.orders.get_all_stock_orders() if
+                      order['cancel'] is not None]
+            # print(orders[0])
+            print(robin_stocks.robinhood.profiles.load_account_profile())
+
+            # print(robin_stocks.robinhood.orders.get_stock_order_info(orders[0]['id']))
+
             context = {'account': robin_stocks.robinhood.profiles.load_account_profile(),
                        'portfolio': robin_stocks.robinhood.load_portfolio_profile(),
                        'holdings': robin_stocks.robinhood.account.build_holdings(),
-                       'cryptos': robin_stocks.robinhood.crypto.get_crypto_positions(),
-                       'orders': robin_stocks.robinhood.account.get_open_stock_positions(),
+                       # 'cryptos': robin_stocks.robinhood.crypto.get_crypto_positions(),
+                       # 'orders': robin_stocks.robinhood.account.get_open_stock_positions(),
                        # 'stock_pairs': robin_stocks.robinhood.markets.get_all_stocks_from_market_tag(tag='technology')
                        }
+
+            # print(context)
             return render(request, "account/account.html", context)
+
         except:
-            print('false')
             return render(request, "account/account.html")
 
     else:
@@ -49,7 +57,18 @@ def trading(request):
 
 @login_required
 def news(request):
-    return render(request, "account/news.html")
+    robin_stocks.robinhood.authentication.login()
+    holdings = robin_stocks.robinhood.account.build_holdings()
+    # make a list of the tickers based on robin holdings
+    tickers = [stock for stock in holdings]
+    # make a list of news stories
+    news_articles = []
+    for t in tickers:
+        news_articles.append(robin_stocks.robinhood.stocks.get_news(t))
+
+    context = {'news_articles': news_articles}
+
+    return render(request, "account/news.html", context)
 
 
 @login_required
@@ -140,14 +159,52 @@ def ticker(request, tid):
 
     plot_div = plot({'data': fig, 'layout': layout}, output_type='div')
 
-    order_form = OrderForm()
+    buy_order = BuyOrderForm()
+    sell_order = SellOrderForm()
+
+    holdings = robin_stocks.robinhood.account.build_holdings()
+
+    if tid in holdings:
+        stock = holdings[tid]
+    else:
+        stock = {'quantity': 0, 'equity': 0, 'price': robin_stocks.robinhood.stocks.get_latest_price(tid)[0]}
+
+    print(stock)
 
     context = {'ticker': tid,
                'stocks': get_stocks_data(tid),
-               'price': robin_stocks.robinhood.stocks.get_latest_price(tid),
-               'historical': robin_stocks.robinhood.stocks.get_stock_historicals(tid, span='3month'),
+               # 'price': stock['price'],
+               # 'historical': robin_stocks.robinhood.stocks.get_stock_historicals(tid, span='3month'),
                'plot_div': plot_div,
                'layout': layout,
-               'order_form': order_form,
+               'buy_order_form': buy_order,
+               'sell_order_form': sell_order,
+               # 'holdings': holdings,
+               'stock': stock,
                }
     return render(request, 'account/ticker.html', context)
+
+
+# @TODO messages to alert user if success/fail
+def buy(request):
+    if request.method == 'POST':
+        if request.POST['buy_fractional_by'] == 'by_price':
+            robin_stocks.robinhood.orders.order_buy_fractional_by_price(request.POST['buy_ticker'],
+                                                                        int(request.POST['buy_amount']))
+        else:
+            robin_stocks.robinhood.orders.order_buy_fractional_by_quantity(request.POST['buy_ticker'],
+                                                                           int(request.POST['buy_amount']))
+
+    return redirect('account')
+
+
+# @TODO messages to alert user if success/fail
+def sell(request):
+    if request.method == 'POST':
+        if request.POST['sell_fractional_by'] == 'by_price':
+            robin_stocks.robinhood.orders.order_sell_fractional_by_price(request.POST['sell_ticker'],
+                                                                         int(request.POST['sell_amount']))
+        else:
+            robin_stocks.robinhood.orders.order_sell_fractional_by_quantity(request.POST['sell_ticker'],
+                                                                            int(request.POST['sell_amount']))
+    return redirect('account')
