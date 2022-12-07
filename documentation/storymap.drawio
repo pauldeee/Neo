@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="Qm1wgdAbv6t-hR0ltIOR" name="Page-1">
-        <mxGraphModel dx="3085" dy="1933" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="#1b212c" math="0" shadow="0">
+        <mxGraphModel dx="1307" dy="1445" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="#1b212c" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -74,16 +74,16 @@
                     <mxGeometry x="1340" y="280" width="160" height="160" as="geometry"/>
                 </mxCell>
                 <mxCell id="52" value="&lt;span style=&quot;color: rgb(15 , 15 , 15)&quot;&gt;AI builds model for portfolio.&lt;/span&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#FFFFCC;shadow=1;rounded=0;strokeColor=#E6E6B8;fontStyle=0;" parent="1" vertex="1">
-                    <mxGeometry x="1340" y="478" width="160" height="160" as="geometry"/>
+                    <mxGeometry x="1340" y="676" width="160" height="160" as="geometry"/>
                 </mxCell>
                 <mxCell id="53" value="&lt;span style=&quot;color: rgb(15 , 15 , 15)&quot;&gt;AI polls latest trading data.&lt;/span&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#FFFFCC;shadow=1;rounded=0;strokeColor=#E6E6B8;fontStyle=0;" parent="1" vertex="1">
-                    <mxGeometry x="1536" y="676" width="160" height="160" as="geometry"/>
+                    <mxGeometry x="1340" y="478" width="160" height="160" as="geometry"/>
                 </mxCell>
                 <mxCell id="54" value="&lt;span style=&quot;color: rgb(15 , 15 , 15)&quot;&gt;AI assesses prediction against thresholds.&lt;/span&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#FFFFCC;shadow=1;rounded=0;strokeColor=#E6E6B8;fontStyle=0;" parent="1" vertex="1">
-                    <mxGeometry x="1536" y="874" width="160" height="160" as="geometry"/>
+                    <mxGeometry x="1536" y="676" width="160" height="160" as="geometry"/>
                 </mxCell>
                 <mxCell id="56" value="&lt;span style=&quot;color: rgb(15 , 15 , 15)&quot;&gt;AI buys based on prediction.&lt;/span&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#FFFFCC;shadow=1;rounded=0;strokeColor=#E6E6B8;fontStyle=0;" parent="1" vertex="1">
-                    <mxGeometry x="1536" y="1072" width="160" height="160" as="geometry"/>
+                    <mxGeometry x="1536" y="874" width="160" height="160" as="geometry"/>
                 </mxCell>
                 <mxCell id="57" value="&lt;span style=&quot;color: rgb(15 , 15 , 15)&quot;&gt;AI accounts for historical trends.&lt;/span&gt;" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#FFFFCC;shadow=1;rounded=0;strokeColor=#E6E6B8;fontStyle=0;" parent="1" vertex="1">
                     <mxGeometry x="1536" y="478" width="160" height="160" as="geometry"/>
