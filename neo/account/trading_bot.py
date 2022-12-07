@@ -194,19 +194,13 @@ class SingleStockTradingBot:
             return None
 
     def run_once(self):
-        bot = SingleStockTradingBot(self.robin_user, self.robin_pass, self.ticker)
-        result_data = bot.create_predictions_for_stock_with_signals()
-        bt = Backtest(result_data, SignalStrategy, cash=10_000, trade_on_close=True)
-        return bt.run()
-
-    # if __name__ == '__main__':
-    #     bot = SingleStockTradingBot(self.robin_user, self.robin_pass, self.ticker)
-    #     result_data = bot.create_predictions_for_stock_with_signals()
-    #     print(result_data.to_string())
-    #
-    #     bt = Backtest(result_data, SignalStrategy, cash=10_000, trade_on_close=True)
-    #     stats = bt.run()
-    #     print(stats)
+        try:
+            bot = SingleStockTradingBot(self.robin_user, self.robin_pass, self.ticker)
+            result_data = bot.create_predictions_for_stock_with_signals()
+            bt = Backtest(result_data, SignalStrategy, cash=10_000, trade_on_close=True)
+            return bt.run()
+        except:
+            return None
 
 
 class StockMarketWideTradingBot:
@@ -267,20 +261,20 @@ class StockMarketWideTradingBot:
     @staticmethod
     def create_stock_list():
         upcoming_earnings = robin_stocks.robinhood.get_all_stocks_from_market_tag('upcoming-earnings')
-        # tech = robin_stocks.robinhood.get_all_stocks_from_market_tag('technology')
-        # bio = robin_stocks.robinhood.get_all_stocks_from_market_tag('biopharmaceutical')
-        # most_pop_under_25 = robin_stocks.robinhood.get_all_stocks_from_market_tag('most-popular-under-25')
-        # top_100 = robin_stocks.robinhood.get_all_stocks_from_market_tag('100-most-popular')
-        # energy = robin_stocks.robinhood.get_all_stocks_from_market_tag('energy')
-        # banks = robin_stocks.robinhood.get_all_stocks_from_market_tag('banking')
+        tech = robin_stocks.robinhood.get_all_stocks_from_market_tag('technology')
+        bio = robin_stocks.robinhood.get_all_stocks_from_market_tag('biopharmaceutical')
+        most_pop_under_25 = robin_stocks.robinhood.get_all_stocks_from_market_tag('most-popular-under-25')
+        top_100 = robin_stocks.robinhood.get_all_stocks_from_market_tag('100-most-popular')
+        energy = robin_stocks.robinhood.get_all_stocks_from_market_tag('energy')
+        banks = robin_stocks.robinhood.get_all_stocks_from_market_tag('banking')
 
         stocks = upcoming_earnings
-        # stocks += tech
-        # stocks += bio
-        # stocks += most_pop_under_25
-        # stocks += top_100
-        # stocks += energy
-        # stocks += banks
+        stocks += tech
+        stocks += bio
+        stocks += most_pop_under_25
+        stocks += top_100
+        stocks += energy
+        stocks += banks
 
         # CLEAN STOCKS
         # remove duplicate stocks

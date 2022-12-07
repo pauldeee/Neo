@@ -17,7 +17,7 @@
 <div style="text-align: center">
     <h1>{{ ticker }} -- {{ stocks.name }} <br> ${{ stock.price|floatformat:2|intcomma }}</h1>
 
-    <h3>Quantity Owned: {{stock.quantity|intcomma}} shares | Market value: ${{ stock.equity|floatformat:2|intcomma }}</h3>
+    <h3>Quantity Owned: {{stock.quantity|intcomma}} shares | Market value: ${{stock.equity|floatformat:2|intcomma}}</h3>
 
     <form action="/buy" method="post">
         {% csrf_token %}

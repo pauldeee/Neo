@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
@@ -12,9 +13,23 @@
 </nav>
 <body>
 <h1>How To</h1>
-<h3>Connect an Account</h3>
-<h3>Place a trade</h3>
-<h3>Enable automated trading</h3>
-<h3>export trading history</h3>
+<div class="box" style="box-shadow: 10px 10px 5px"><h3>Connect an Account</h3>
+    <p>After registering for Neo, simply hover over the "My Account" menu and select "External Accounts." On this page
+        you can select an institution you'd like to add, provide the required information and click "Connect
+        Account!" </p>
+</div>
+<div class="box" style="box-shadow: 10px 10px 5px"><h3>Placing a Manual Trade</h3>
+    <p>Is there a stock you really like? You can manually trade it by searching for the stock name or ticker in the
+        search bar along the top of the webpage. After searching, you'll be shown the asset and can buy or sell. If you
+        want to buy based on dollar amount select "Dollars", if you want to buy based on number of shares select
+        "shares" then click the "Place BUY Order" button. These same steps can be used for selling. Simply use the
+        "Amount to SELL" field and the "Place SELL Order" button</p>
+</div>
+<div class="box" style="box-shadow: 10px 10px 5px"><h3>Enabling Fully Automated Predictive Trading</h3>
+    <p>After creating your Neo account and connect an external account, simply navigate to "My Account > Trading." Here
+        you will find the Trading Center. Here you will find Neo's "Market-Wide Predictive Trading bot where you can
+        enable Neo's Next Day Up strategy. Simply click "START" to start trading automatically or "STOP" to stop
+        automatic trading with Next-Day-Up.</p>
+</div>
 </body>
 </html>

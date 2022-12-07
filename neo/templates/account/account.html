@@ -20,7 +20,7 @@
 <!--<div class="box">-->
 <!--    <h2>Market Info Quick View</h2>-->
 <!--</div>-->
-<div class="box">
+<div class="box" style="box-shadow: 10px 10px 5px">
     <h2>Cash available ${{account.buying_power|floatformat:2|intcomma}}</h2>
     <h2>Cash in orders: ${{account.cash_held_for_orders|floatformat:2|intcomma}}</h2>
     <h2>Total market value: ${{portfolio.market_value|floatformat:2|intcomma}}</h2>
@@ -31,10 +31,10 @@
     <!--    <h2>Total Value: ${{account.portfolio_cash}}</h2>-->
 </div>
 </div>
-<div class="box"><h2>Current Profit / Loss</h2>
+<!--<div class="box"style="box-shadow: 10px 10px 5px"><h2>Current Profit / Loss</h2>-->
+<!--</div>-->
 </div>
-</div>
-<div class="box"><h2>Currently Held Assets</h2>
+<div class="box" style="box-shadow: 10px 10px 5px"><h2>Currently Held Assets</h2>
     {% for k,v in holdings.items %}
     <li>{{v.name}}, value = ${{v.equity}}, Δ% = {{ v.percent_change}}</li>
     <br>
@@ -44,12 +44,12 @@
 <!--    <h2>Newsfeed</h2>-->
 <!--</div>-->
 
-<div class="box">
-    <h2>Open Orders</h2>
-    {% for order in orders %}
-    <h3>{{order.name}} </h3>
-    {% endfor %}
-</div>
+<!--<div class="box" style="box-shadow: 10px 10px 5px">-->
+<!--    <h2>Open Orders</h2>-->
+<!--    {% for order in orders %}-->
+<!--    <h3>{{order.name}} </h3>-->
+<!--    {% endfor %}-->
+<!--</div>-->
 
 <!--</div>-->
 <!--<div class="box"><h2>Trade History</h2>-->

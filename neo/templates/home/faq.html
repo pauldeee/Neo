@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
@@ -11,11 +12,33 @@
     {% include 'navbar/navbar.html' %}
 </nav>
 <body>
+
 <h1>Frequently Asked Questions</h1>
-<h3>How does Neo work?</h3>
-<p>Neo works by taking account you already own and allowing you to interact with them in one location.</p>
-<h3>Why would I want to use Neo?</h3>
-<p>Neo is much more than just one location for your trading-financials. Neo can place trades, help you trade and even
-    trade for you.</p>
+<div class="box" style="box-shadow: 10px 10px 5px">
+    <h3>How does Neo work?</h3>
+    <p>Neo works by taking accounts you already own and allowing you to interact with them in one location.</p>
+
+</div>
+<div class="box" style="box-shadow: 10px 10px 5px">
+    <h3>Why would I want to use Neo?</h3>
+    <p>Neo is much more than just one location for your trading-financials. Neo can place trades, help you trade and
+        even trade for you.</p>
+</div>
+
+<div class="box" style="box-shadow: 10px 10px 5px">
+    <h3>What is Neo's Next-day Up?</h3>
+    <p>Next-day Up is the predictive strategy that Neo uses when you enable automated trading.</p>
+    <h4>How it works:</h4>
+    <p>Neo looks at thousands of stocks and predicts if the next day the stock will close higher or lower than today's
+        close.</p>
+    <p>Next-day Up then analyzes its predicitons against past data, keeping only the top 10 trades with the probability
+        of success.</p>
+    <h4>Risk Handling</h4>
+    <p>Neo follows a 1% /10% rule. This means that on any given trade Next-day Up will never trade more than 1% of your
+        total portfolio value on a single trade -- never risking more than 10% of total funds on a single set of
+        trades</p>
+</div>
+
+
 </body>
 </html>

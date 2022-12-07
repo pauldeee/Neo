@@ -224,6 +224,7 @@ def ticker(request, tid):
 
     print(stock)
 
+
     context = {'ticker': tid,
                'stocks': get_stocks_data(tid),
                # 'price': stock['price'],
@@ -271,8 +272,8 @@ def run_bot():
         if now.hour == 9:
             print('hour is ', str(now.hour), ' run bot once')
             market_wide_bot.run_once()
-            time.sleep(61)  # sleep for 1 day - 1 sec
-        if now.hour == 9 and now.minute == 20:  # sell 10 minutes before market close -- what about holidays?
+            time.sleep(4000)  # sleep for 1 hour ish
+        if now.hour == 20 and now.minute == 55:  # sell 5 minutes before market close -- what about holidays?
             market_wide_bot.sell_all_stocks()
             time.sleep(61)
 
@@ -285,7 +286,6 @@ def start_bot(request):
         market_wide_bot = StockMarketWideTradingBot(request.user.robinhood_email, request.user.robinhood_password)
         thread = Thread(target=run_bot)
         thread.start()
-        print('yes')
     return redirect('trading')
 
 
