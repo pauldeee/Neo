@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+{% load humanize %}
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <title>Backtest Result</title>
+</head>
+<nav>
+    {% include 'navbar/navbar.html' %}
+</nav>
+<body>
+<div style="text-align: center">
+    <h1>Backtesting Result for {{ticker}}</h1>
+    <h3>Total Return: {{percent_return|floatformat:2}}%</h3>
+    <h3>Starting Balance: ${{starting_balance|floatformat:2|intcomma}}</h3>
+    <h3>Maximum Balance: ${{equity_max|floatformat:2|intcomma}}</h3>
+    <h3>Ending Balance: ${{equity_final|floatformat:2|intcomma}}</h3>
+    <h3>Testing Start Date: {{start_date}}</h3>
+    <h3>Testing End Date: {{end_date}}</h3>
+    <h3>Total Duration: {{duration}}</h3>
+    <h3>Buy-and-Hold Return: {{buy_and_hold|floatformat:2|intcomma}}%</h3>
+    <h3>Annual Return: {{annual_return|floatformat:2|intcomma}}%</h3>
+    <h3>Maximum Drawdown: {{max_draw_percent|floatformat:2|intcomma}}%</h3>
+    <h3>Average Drawdown: {{avg_draw_percent|floatformat:2|intcomma}}%</h3>
+    <h3>Numer of Trades: {{num_trades|intcomma}}</h3>
+    <h3>Winning Trades: {{win_percent|floatformat:2|intcomma}}%</h3>
+    <h3>Best Trade: {{best_trade_percent|floatformat:2|intcomma}}%</h3>
+    <h3>Worst Trade: {{worst_trade_percent|floatformat:2|intcomma}}%</h3>
+    <h3>Sharpe Ratio: {{sharpe|floatformat:2|intcomma}}</h3>
+    <h3>Sortino Ratio: {{sortino|floatformat:2|intcomma}}</h3>
+    <h3>Calmar Ratio: {{calmar|floatformat:2|intcomma}}</h3>
+</div>
+
+
+</body>
+</html>

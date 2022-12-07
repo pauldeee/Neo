@@ -17,36 +17,43 @@
 <body>
 <h1>Trading Center</h1>
 <div class="box">
-    <h3>Search for an asset</h3>
-    <!--    <br>-->
-    <input type="text" placeholder="Search by ticker or name">
-    <button>Search</button>
-</div>
-<div class="box">
-    <h3>Watch List</h3>
+    <h2>Market-Wide Trading Bot</h2>
+    <h3>This bot is currently running: {{is_running}}</h3>
+    <form action="/start_bot" method="post">
+        {% csrf_token %}
+        <button type="submit">START</button>
+    </form>
     <br>
+    <form action="/stop_bot" method="post">
+        {% csrf_token %}
+        <button type="submit">STOP</button>
+    </form>
 </div>
+<!--<div class="box">-->
+<!--    <h3>Watch List</h3>-->
+<!--    <br>-->
+<!--</div>-->
 <div class="box">
     <h3>Bigest Movers</h3>
     <br>
 </div>
-<div class="box">
-    <h3>Place a Trade</h3>
-</div>
-<div class="box">
-    <h3>Trading Strategies</h3>
-</div>
-<div class="box">
-    <h3>Active Strategies</h3>
-</div>
+<!--<div class="box">-->
+<!--    <h3>Place a Trade</h3>-->
+<!--</div>-->
+<!--<div class="box">-->
+<!--    <h3>Trading Strategies</h3>-->
+<!--</div>-->
+<!--<div class="box">-->
+<!--    <h3>Active Strategies</h3>-->
+<!--</div>-->
 
-<div class="box">
-    <h3>Backtesting Strategies</h3>
-</div>
+<!--<div class="box">-->
+<!--    <h3>Backtesting Strategies</h3>-->
+<!--</div>-->
 
-<div class="box">
-    <h3>Deeper Market Info</h3>
-</div>
+<!--<div class="box">-->
+<!--    <h3>Deeper Market Info</h3>-->
+<!--</div>-->
 
 
 </body>

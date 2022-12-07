@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'authentication',  # add the app/module list of installed apps -- this adds the models.py to the DB
     'account',
+    'django.contrib.humanize',  # for easy formatting of variables being passed to front end
 ]
 
 MIDDLEWARE = [

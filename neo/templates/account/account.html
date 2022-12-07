@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<!--{% load static %}-->
+{% load static %}
+{% load humanize %}
+
 <html lang="en">
 <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
@@ -15,13 +17,13 @@
 </nav>
 <body>
 <h2>{{user.first_name}}'s Account</h2>
+<!--<div class="box">-->
+<!--    <h2>Market Info Quick View</h2>-->
+<!--</div>-->
 <div class="box">
-    <h2>Market Info Quick View</h2>
-</div>
-<div class="box">
-    <h2>Cash available ${{account.buying_power}}</h2>
-    <h2>Cash in orders: ${{account.cash_held_for_orders}}</h2>
-    <h2>Total market value: ${{portfolio.market_value}}</h2>
+    <h2>Cash available ${{account.buying_power|floatformat:2|intcomma}}</h2>
+    <h2>Cash in orders: ${{account.cash_held_for_orders|floatformat:2|intcomma}}</h2>
+    <h2>Total market value: ${{portfolio.market_value|floatformat:2|intcomma}}</h2>
     <!--    <h2>Buying Power: ${{account.buying_power}}</h2>-->
     <!--    <h2>Total Value: ${{account.portfolio_cash}}</h2>-->
     <!--    <h2>Total Value: ${{account.portfolio_cash}}</h2>-->
@@ -38,9 +40,9 @@
     <br>
     {% endfor %}
 </div>
-<div class="box">
-    <h2>Newsfeed</h2>
-</div>
+<!--<div class="box">-->
+<!--    <h2>Newsfeed</h2>-->
+<!--</div>-->
 
 <div class="box">
     <h2>Open Orders</h2>
@@ -49,9 +51,9 @@
     {% endfor %}
 </div>
 
-</div>
-<div class="box"><h2>Trade History</h2>
-</div>
+<!--</div>-->
+<!--<div class="box"><h2>Trade History</h2>-->
+<!--</div>-->
 
 
 </body>

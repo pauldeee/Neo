@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load humanize %}
 <html lang="en">
 <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 <head>
@@ -14,9 +15,9 @@
 <body>
 
 <div style="text-align: center">
-    <h1>{{ ticker }} -- {{ stocks.name }} <br> ${{ stock.price }}</h1>
+    <h1>{{ ticker }} -- {{ stocks.name }} <br> ${{ stock.price|floatformat:2|intcomma }}</h1>
 
-    <h3>Quantity Owned: {{stock.quantity}} shares | Market value: ${{ stock.equity }}</h3>
+    <h3>Quantity Owned: {{stock.quantity|intcomma}} shares | Market value: ${{ stock.equity|floatformat:2|intcomma }}</h3>
 
     <form action="/buy" method="post">
         {% csrf_token %}
@@ -29,7 +30,6 @@
         <button type="submit">Place BUY Order</button>
     </form>
 
-
     <form action="/sell" method="post">
         {% csrf_token %}
         <input type="hidden" id="sell_ticker" name=ticker value={{ticker}}>
@@ -41,8 +41,11 @@
         <button type="submit">Place SELL Order</button>
     </form>
 
-
-    <button>Add to Watchlist</button>
+    <form action="/backtest" method="post">
+        {% csrf_token %}
+        <input type="hidden" id="ticker" name=ticker value={{ticker}}>
+        <button type="submit">Backtest {{ticker}}</button>
+    </form>
 
     {% autoescape off %}
     {{ plot_div }}
